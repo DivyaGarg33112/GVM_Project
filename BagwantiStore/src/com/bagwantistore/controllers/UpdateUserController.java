@@ -12,13 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bagwantistore.daos.UserDao;
 import com.bagwantistore.daosimpl.UserDaoImpl;
 import com.bagwantistore.models.User;
 
-@WebServlet("/registerUser")
-public class UserRegistrationController extends HttpServlet {
+@WebServlet("/updateUser")
+public class UpdateUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,14 +51,16 @@ public class UserRegistrationController extends HttpServlet {
     	userObj.setDateOfBirth(dob);
     	
     	UserDao dao=new UserDaoImpl();
-    	boolean r=dao.registerUser(userObj);
+    	boolean r=dao.updateUser(userObj);
     	if(r){
-    		request.setAttribute("msg", "User registered Succesfully.. Now U can login");
-    		RequestDispatcher rd=request.getRequestDispatcher("Login.jsp");
+    		HttpSession session=request.getSession();
+    		request.setAttribute("msg", "User updated Succesfully");
+    		session.setAttribute("user",userObj);
+    		RequestDispatcher rd=request.getRequestDispatcher("ViewProfile.jsp");
     		rd.forward(request, response);
     	}
     	else {
-    		RequestDispatcher rd=request.getRequestDispatcher("SignUp.jsp");
+    		RequestDispatcher rd=request.getRequestDispatcher("UpdateProfile.jsp");
     		rd.forward(request, response);
     				
     	}

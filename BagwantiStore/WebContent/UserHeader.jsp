@@ -31,8 +31,15 @@
       <li><a href="#">Contact Us</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="SignUp.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome : ${sessionScope.user.firstName} ${sessionScope.user.lastName}<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="ViewProfile.jsp">View Profile</a></li>
+          <li><a href="UpdateProfile.jsp">Update Profile</a></li>
+          <li><a href="#">Change Password</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+        </ul>
+      </li>
+      
     </ul>
   </div>
 </nav>
