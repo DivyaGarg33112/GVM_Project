@@ -26,6 +26,7 @@
           <li><a href="AddCategory.jsp">Add Category</a></li>
           <li><a href="viewAllCategories">View All Categories</a></li>
           <li><a href="getSubCategoryForm">Add Sub Category</a></li>
+          <li><a href="AddProduct.jsp">Add Product</a></li>
         </ul>
       </li>
       <li><a href="#">About Us</a></li>
